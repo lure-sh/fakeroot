@@ -12,6 +12,6 @@ Instead of injecting custom libc functions, this library uses Linux's user names
 
 ### Why?
 
-Fakeroot is very useful for building packages, as various utilities depend on file permissions and users. For example, the `tar` command that creates tar archives. It creates files inside the tar archive with the same permissions as the original files. That means if the files were owned by a particular user, they will still be owned by that user when the tar archive is extracted. This is problematic for package building because it means you can end up with system files in a package, owned by non-root users. Fakeroot is used to trick utilities like `tar` into making files owned as root.
+Fakeroot is very useful for building packages, as various utilities depend on file permissions and users. For example, the `tar` command. It creates files inside the tar archive with the same permissions as the original files. That means if the files were owned by a particular user, they will still be owned by that user when the tar archive is extracted. This is problematic for package building because it means you can end up with system files in a package, owned by non-root users. Fakeroot is used to trick utilities like `tar` into making files owned as root.
 
 Many utilities require root privileges for some operations but return errors even if the specific thing you're doing doesn't require them. Fakeroot can also be used to execute these programs without actually giving them root privileges, which provides extra security.
