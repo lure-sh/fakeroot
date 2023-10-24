@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 
 	"lure.sh/fakeroot"
 	"lure.sh/fakeroot/loginshell"
@@ -46,7 +47,9 @@ func main() {
 	c.Stderr = os.Stderr
 
 	err = c.Run()
-	if err != nil {
+	if err, ok := err.(*exec.ExitError); ok {
+		os.Exit(err.ExitCode())
+	} else if err != nil {
 		log.Fatalln(err)
 	}
 }
