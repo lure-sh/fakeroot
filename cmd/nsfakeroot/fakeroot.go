@@ -26,7 +26,7 @@ func main() {
 		args []string
 		err  error
 	)
-	if flag.NArg() > 1 {
+	if flag.NArg() > 0 {
 		cmd = flag.Arg(0)
 		args = flag.Args()[1:]
 	} else {

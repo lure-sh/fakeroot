@@ -15,3 +15,22 @@ Instead of injecting custom libc functions, this library uses the Linux kernel's
 Many utilities depend on file permissions and user ownership. For instance, the tar command creates files within a tar archive with the same permissions as the original files. This means that if the files were owned by a specific user, they will retain that ownership when the tar archive is extracted. This can become problematic when building packages because it could lead to system files in a package being owned by non-root users. By making it seem as if the current user is root and therefore all the files are owned by root, fakeroot tricks utilities like `tar` into making its files owned by root.
 
 Also, many utilities may require root privileges for certain operations but might return errors even when the specific task doesn't necessarily need those elevated permissions. Fakeroot can be used to execute these programs without actually granting them root privileges, which provides some extra security.
+
+### nsfakeroot
+
+This repo includdes a command-line utility called `nsfakeroot`. To install it, run the following command:
+
+```bash
+go install lure.sh/fakeroot/cmd/nsfakeroot@latest
+```
+
+Running `nsfakeroot` on its own will start your login shell in the fakeroot environment. If you provide arguments, those will be used as the command.
+
+Examples:
+
+```bash
+nsfakeroot        # -> (login shell)
+nsfakeroot whoami # -> root
+nsfakeroot id -u  # -> 0
+nsfakeroot id -g  # -> 0
+```
