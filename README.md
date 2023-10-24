@@ -10,7 +10,11 @@ Fakeroot is a utility that runs commands in an environment where they appear to 
 
 ### How is this library different?
 
-Instead of injecting custom libc functions, this library uses the Linux kernel's built-in isolation features to make a sort of container where the user is root. That means even programs that don't use libc (such as Go programs), or programs with a statically-linked libc, will believe they're running as root. However, this approach will only work on Linux kernels new enough (3.8+) and on distros that don't disable this functionality. Most modern Linux systems support it though, so it should work in most cases.
+Instead of injecting custom libc functions, this library uses the Linux kernel's built-in isolation features to make a sort of container where the user is root. That means even programs that don't use libc (such as Go programs), or programs with a statically-linked libc, will believe they're running as root.
+
+You can also nest this type of fakeroot up to 32 times, unlike the original libc-based one, which doesn't support nesting at all.
+
+However, this approach will only work on Linux kernels new enough (3.8+) and on distros that don't disable this functionality. Most modern Linux systems support it though, so it should work in most cases.
 
 ### Why?
 
