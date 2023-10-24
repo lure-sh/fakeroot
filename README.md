@@ -1,5 +1,7 @@
 # fakeroot
 
+[![Go Reference](https://pkg.go.dev/badge/lure.sh/fakeroot.svg)](https://pkg.go.dev/lure.sh/fakeroot)
+
 A pure-Go implementation of fakeroot using Linux user namespaces.
 
 ### What is fakeroot?
