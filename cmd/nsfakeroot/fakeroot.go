@@ -52,7 +52,7 @@ func main() {
 }
 
 func printHelp() {
-	fmt.Print("Fakeroot implementation written in Go.\n\n")
+	fmt.Print("Go implementation of fakeroot using Linux user namespaces.\n\n")
 	fmt.Print("Usage: fakeroot [cmd] [args...]\n\n")
 	fmt.Print("Arguments:\n")
 	fmt.Print(" [cmd]     Command to execute in fakeroot environment. If not specified, the user's login shell will be executed.\n")
